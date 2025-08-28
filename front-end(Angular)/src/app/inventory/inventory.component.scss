@@ -1,0 +1,302 @@
+.tit-inventario{
+    font-family: 'poetsen one', cursive;
+}
+
+// Style Totalidad
+
+.cant-total{
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+}
+
+.body1, .body2 {
+    width: 350px;
+    height: 80px;
+    background-color: white;
+    box-shadow: 0 0 6px 0.5px rgba(143, 143, 143, 0.413);
+    padding: 10px;
+    border-radius: 15px;
+    display: grid;
+    position: relative;
+    margin: 10px;
+}
+
+.cant-inven {
+    position: relative;
+    top: -50px;
+    left: 70px;
+}
+
+.text {
+    position: relative;
+    top: -50px;
+    left: 70px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .body1,
+    .body2 {
+        margin: 10px 0; 
+    }
+}
+
+// Style Busqueda, Crear Categoria y Agregar Productos
+.container.agg{
+    display: flex;
+    justify-content: center;
+}
+
+.form-control{
+    width: 350px;
+    border-radius: 18px;
+    box-shadow: 0 0 6px 0.5px rgba(143, 143, 143, 0.413);
+}
+
+.form-control:focus{
+    border: 1px solid #5adbff;
+    box-shadow: 0 0 6px 0.5px #5adbff;
+}
+
+.form-select{
+    border-radius: 18px;
+    box-shadow: 0 0 6px 0.5px rgba(143, 143, 143, 0.413);
+}
+
+.form-select:active{
+    border: 1px solid #5adbff;
+    box-shadow: 0 0 6px 0.5px #5adbff;
+}
+
+.btn.crear{
+    width: 220px;
+    background-color: white;
+    border-radius: 18px;
+    box-shadow: 0 0 6px 0.5px rgba(143, 143, 143, 0.413);
+}
+
+.btn.crear:active{
+    border: 1px solid #5adbff;
+    box-shadow: 0 0 6px 0.5px #5adbff;
+}
+
+.btn.agregar{
+    background-color: #5adbff;
+    width: 200px;
+    border-radius: 18px;
+    box-shadow: 0 0 6px 0.5px #5adbff;
+    color: white;
+    font-size: 18px;
+}
+
+.btn.confir{
+    width: 88%;
+    background-color: #5adbff;
+    box-shadow: 0 0 6px 0.5px #5adbff;
+    border: none;
+    cursor: pointer;
+}
+
+.btn.btn.agregar:active{
+    border: 1px solid #5adbff;
+    box-shadow: 0 0 6px 2px #5adbff;
+}
+
+.crear-cate{
+    display: flex;
+    justify-content: center;
+}
+
+.agg-produc{
+    display: flex;
+    justify-content: center;
+}
+
+
+@media (max-width: 990px) {
+    .container.agg {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container.agg  {
+        width: 100%;
+        max-width: 90%;
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-control,.form-select,.btn.crear,.btn.agregar {
+        width: 100%;
+        margin: 5px 0;
+        box-sizing: border-box;
+    }
+    
+    
+}
+
+// Style Productos
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 15px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: gray;
+    box-shadow: 0 0 6px 0.5px rgba(143, 143, 143, 0.413);
+    padding: 15px;
+}
+
+.img-card {
+    width: 100%;
+    height: auto;
+    max-width: 250px;
+    object-fit: cover;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.text-prec, .text-nom, .text-cant {
+    margin: 5px 0;
+}
+
+.text-cant {
+    color: rgb(151, 151, 151);
+}
+
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        max-width: 80%;
+        margin: 10px auto; 
+    }
+}
+
+.btn.eliminar {
+    width: 165px;
+    text-align: center;
+    color: red;
+    box-shadow: 0 0 3px 1px #e81313;
+    border-radius: 7px;
+    padding: 7px;
+}
+
+.btn.eliminar:focus {
+    border: 1px solid #e81313;
+    box-shadow: 0 0 6px 2px #e81313;
+}
+
+.btn.modificar {
+    box-shadow: 0 0 3px 1px #575757;
+    border: none;
+    width: 165px;
+    text-align: center;
+    border-radius: 7px;
+    color: black;
+    padding: 7px;
+    font-weight: bold;
+    margin-left: 12px;
+}
+
+.btn.modificar:focus {
+    border: 1px solid #575757;
+    box-shadow: 0 0 6px 2px #575757;
+}
+
+.confirmarfinal {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 1px 1px 1px #707070;
+    background-color: white;
+    height: 130px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.fila-superior,
+.fila-inferior {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.elimi-modifi {
+    display: flex;
+    border-radius: 5px;
+}
+
+.btn.create_cate {
+    width: 88%;
+    background-color: #5adbff;
+    box-shadow: 0 0 6px 0.5px #5adbff;
+    border: none;
+    cursor: pointer;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: auto;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
+}
+
+nav {
+    margin-top: 1em;
+    padding-top: 0.5em;
+    font: 1.2em sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.pagination li {
+    margin: 0 1px;
+}
+
+.pagination a {
+    display: block;
+    padding: 0.5em 1em;
+    border: 1px solid #999;
+    border-radius: 0.2em;
+    text-decoration: none;
+}
+
+.pagination a[aria-current="page"] {
+    background-color: #333;
+    color: #fff;
+}
