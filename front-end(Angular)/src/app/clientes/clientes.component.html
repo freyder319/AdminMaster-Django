@@ -14,6 +14,7 @@
     </div>
   </section>
   <br>
+
   <!-- Busqueda y Agregar -->
   <section>
     <div class="container buscar-agg">
@@ -26,24 +27,20 @@
             </div>
           </div>
         </div>
+
         <!-- Agregar Cliente -->
-        <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="col-sm-12 col-md-6 col-lg-6 text-end">
           <div class="agg-cli">
-            <button class="btn agregar" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+            <button class="btn agregar" type="button" data-bs-toggle="offcanvas" data-bs-target="#addClienteOffcanvas" aria-controls="addClienteOffcanvas">
               Agregar Cliente
             </button>
-            <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+            <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="addClienteOffcanvas" aria-labelledby="addClienteLabel">
               <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="staticBackdropLabel">Registrar Cliente</h5>
+                <h5 class="offcanvas-title" id="addClienteLabel">Registrar Cliente</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
               <div class="offcanvas-body">
-                <div>
-                  <app-add-clientes></app-add-clientes>
-                </div>
-              </div>
-              <div class="confirmarfinal">
-                <button type="submit" class="btn confir">Confirmar</button>
+                <app-add-clientes (actualizar)="actualizarLista()"></app-add-clientes>
               </div>
             </div>
           </div>
@@ -51,9 +48,10 @@
       </div>
     </div>
   </section>
-  <!-- Tablas Informacion -->
+
+  <!-- Tabla de clientes -->
   <section>
-    <div class="container">
+    <div class="container mt-3">
       <table class="table table-bordered">
         <thead class="table-secondary">
           <tr>
@@ -67,40 +65,38 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="td1" data-label="Nombre De Cliente"> 
-              <img src="../../assets/img/icons-navbar/Clientes.png" alt="" width="30px" height="30px">
-              <a>Claudia Peñuela</a>
+          <tr *ngFor="let cliente of clientes">
+            <td class="td1" data-label="Nombre De Cliente">
+              <img src="../../assets/img/icons-navbar/Clientes.png" alt="Cliente" width="30px" height="30px">
+              <a>{{ cliente.clienteNom }} {{ cliente.clienteApel }}</a>
             </td>
-            <td data-label="Teléfono">31546235215</td>
-            <td data-label="Correo">freyderjapogmail.com</td>
+            <td data-label="Teléfono">{{ cliente.clienteTel }}</td>
+            <td data-label="Correo">{{ cliente.clienteCor }}</td>
             <td data-label="N° Deudas">0</td>
-            <td data-label="N° Deudas">5</td>
-            <td data-label="Estado de Cliente"><span class="status activo">Activo</span></td>
-            <td data-label="Acciones">
-              <button class="btn ver">Ver</button>
-              <button class="btn modificar">Modificar</button>
-              <button class="btn eliminar">Eliminar</button>
+            <td data-label="N° Compras">0</td>
+            <td data-label="Estado de Cliente">
+              <span class="status" [ngClass]="cliente.clienteEst.toLowerCase()">
+                {{ cliente.clienteEst }}
+              </span>
             </td>
-          </tr>
-          <tr>
-            <td class="td1" data-label="Nombre De Cliente"> 
-              <img src="../../assets/img/icons-navbar/Clientes.png" alt="" width="30px" height="30px">
-              <a>Henry Forero</a>
-            </td>
-            <td data-label="Teléfono">31852635215</td>
-            <td data-label="Correo">Henryfogmail.com</td>
-            <td data-label="N° Deudas">2</td>
-            <td data-label="N° Compras">20</td>
-            <td data-label="Estado de Cliente"><span class="status inactivo">Inactivo</span></td>
             <td data-label="Acciones">
-              <button class="btn ver">Ver</button>
-              <button class="btn modificar">Modificar</button>
-              <button class="btn eliminar">Eliminar</button>
+              <button class="btn modificar" (click)="abrirModificar(cliente)">Modificar</button>
+              <button class="btn eliminar" (click)="eliminarCliente(cliente.idcliente)">Eliminar</button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
   </section>
+
+  <!-- Modal / Offcanvas modificar cliente -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="modifyOffcanvas" aria-labelledby="modifyOffcanvasLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="modifyOffcanvasLabel">Modificar Cliente</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <app-modify-clientes [cliente]="selectedCliente" (actualizar)="actualizarLista()"></app-modify-clientes>
+    </div>
+  </div>
 </main>

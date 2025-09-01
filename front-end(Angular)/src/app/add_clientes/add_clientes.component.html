@@ -1,35 +1,68 @@
 <!-- Botones Activo-Inactivo -->
-
 <div class="container act-inac">
-    <div class="activo">
-        <button class="btn-act">Activo</button>
-    </div>
-    <div class="inactivo">
-        <button class="btn-inac">Inactivo</button>
-    </div>
-</div><br>
+  <div class="activo">
+    <button type="button" class="btn-act" (click)="estado = 'Activo'">Activo</button>
+  </div>
+  <div class="inactivo">
+    <button type="button" class="btn-inac" (click)="estado = 'Inactivo'">Inactivo</button>
+  </div>
+</div>
+<br />
 
 <!-- Formulario Registro -->
-
 <div class="container form">
-    <div class="formulario">
-        <form>
-            <div class="mb-3">
-              <label for="exampleInputText" class="form-label">Nombre del Cliente</label>
-              <input type="text" class="form-control" id="exampleInputText" aria-describedby="textHelp">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputText" class="form-label">Apellido del Cliente</label>
-                <input type="text" class="form-control" id="exampleInputText" aria-describedby="textHelp">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputText" class="form-label">Telefono</label>
-                <input type="text" class="form-control" id="exampleInputText" aria-describedby="textHelp">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Correo Electronico</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            </div><br>
-          </form>
-    </div>
+  <div class="formulario">
+    <form (ngSubmit)="agregarCliente()" #clienteForm="ngForm">
+      <div class="mb-3">
+        <label class="form-label">Nombre del Cliente</label>
+        <input title="nom"
+          type="text"
+          class="form-control"
+          [(ngModel)]="nuevoCliente.clienteNom"
+          name="clienteNom"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Apellido del Cliente</label>
+        <input title="apel"
+          type="text"
+          class="form-control"
+          [(ngModel)]="nuevoCliente.clienteApel"
+          name="clienteApel"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Teléfono</label>
+        <input title="cliente"
+          type="text"
+          class="form-control"
+          [(ngModel)]="nuevoCliente.clienteTel"
+          name="clienteTel"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Correo Electrónico</label>
+        <input title="cliente"
+          type="email"
+          class="form-control"
+          [(ngModel)]="nuevoCliente.clienteCor"
+          name="clienteCor"
+          required
+        />
+      </div>
+      <br />
+
+      <div class="confirmarfinal">
+        <button type="submit" class="btn confir" [disabled]="clienteForm.invalid">
+          Confirmar
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
