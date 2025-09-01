@@ -1,35 +1,41 @@
-<!-- Botones Activo-Inactivo -->
-
-<div class="container act-inac">
-    <div class="activo">
-        <button class="btn-act">Activo</button>
-    </div>
-    <div class="inactivo">
-        <button class="btn-inac">Inactivo</button>
-    </div>
-</div><br>
-
 <!-- Formulario Registro -->
 
 <div class="container form">
     <div class="formulario">
-        <form>
+        <form (ngSubmit)="crearProveedor()">
+
             <div class="mb-3">
-              <label for="exampleInputText" class="form-label">Nombre del Proveedor</label>
-              <input type="text" class="form-control" id="exampleInputText" aria-describedby="textHelp">
+                <label class="form-label">Nombre del Proveedor</label>
+                <input type="text" class="form-control" [(ngModel)]="nuevoProveedor.nombre_proveedor" name="nombre">
             </div>
             <div class="mb-3">
-                <label for="exampleInputText" class="form-label">Apellido del Proveedor</label>
-                <input type="text" class="form-control" id="exampleInputText" aria-describedby="textHelp">
+                <label class="form-label">Apellido del Proveedor</label>
+                <input type="text" class="form-control" [(ngModel)]="nuevoProveedor.apellido_proveedor" name="apellido">
             </div>
             <div class="mb-3">
-                <label for="exampleInputText" class="form-label">Telefono</label>
-                <input type="text" class="form-control" id="exampleInputText" aria-describedby="textHelp">
+                <label class="form-label">Teléfono</label>
+                <input type="text" class="form-control" [(ngModel)]="nuevoProveedor.telefono_proveedor" name="telefono">
             </div>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Correo Electronico</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            </div><br>
-          </form>
+                <label class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" [(ngModel)]="nuevoProveedor.correo_proveedor" name="correo">
+            </div>
+
+            <!-- Estado Activo/Inactivo -->
+             <label class="form-label">Estado</label>
+            <div class="container act-inac">
+                <div class="activo">
+                    <button type="button" class="btn-act" (click)="nuevoProveedor.estado_proveedor = 'Activo'">Activo</button>
+                </div>
+                <div class="inactivo">
+                    <button type="button" class="btn-inac" (click)="nuevoProveedor.estado_proveedor = 'Inactivo'">Inactivo</button>
+                </div>
+            </div>
+            <br>
+
+            <div class="confirmarfinal">
+                <button type="submit" class="btn confir">Confirmar</button>
+            </div>
+        </form>
     </div>
 </div>
