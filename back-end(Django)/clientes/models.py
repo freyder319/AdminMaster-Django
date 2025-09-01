@@ -9,5 +9,5 @@ class Clientes(models.Model):
     clienteCor= models.CharField(max_length=100)
     clienteEst= models.CharField(max_length=20)
     def __str__(self):
-        return f"{self.clienteNom} (${self.clienteApel})"
+        return f"{self.clienteNom}{self.clienteApel}"
     

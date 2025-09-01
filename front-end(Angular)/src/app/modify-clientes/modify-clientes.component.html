@@ -1,0 +1,41 @@
+<div *ngIf="cliente">
+  <form #clienteForm="ngForm" (ngSubmit)="modificarCliente()">
+    <!-- Botones Activo/Inactivo -->
+    <div class="container act-inac mb-3">
+      <div class="activo">
+        <button type="button" class="btn-act" (click)="cliente.clienteEst = 'Activo'">Activo</button>
+      </div>
+      <div class="inactivo">
+        <button type="button" class="btn-inac" (click)="cliente.clienteEst = 'Inactivo'">Inactivo</button>
+      </div>
+    </div>
+
+    <!-- Campos del formulario -->
+    <div class="mb-3">
+      <label class="form-label">Nombre</label>
+      <input title="nom" type="text" class="form-control" [(ngModel)]="cliente.clienteNom" name="clienteNom" required />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Apellido</label>
+      <input title="apell" type="text" class="form-control" [(ngModel)]="cliente.clienteApel" name="clienteApel" required />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Teléfono</label>
+      <input title="tele" type="text" class="form-control" [(ngModel)]="cliente.clienteTel" name="clienteTel" required />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Correo</label>
+      <input title="correo" type="email" class="form-control" [(ngModel)]="cliente.clienteCor" name="clienteCor" required />
+    </div>
+
+    <!-- Botón Confirmar -->
+    <div class="confirmarfinal">
+      <button type="submit" class="btn confir" [disabled]="clienteForm.invalid">
+        Confirmar
+      </button>
+    </div>
+  </form>
+</div>
