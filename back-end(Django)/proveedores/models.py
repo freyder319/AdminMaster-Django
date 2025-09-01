@@ -11,4 +11,4 @@ class Proveedor(models.Model):
     estado_proveedor = models.CharField(max_length=20)
 
     def __str__(self):
-        return self.nombre_proveedor
+        return f"{self.nombre_proveedor} {self.apellido_proveedor}"

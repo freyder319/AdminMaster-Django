@@ -4,6 +4,7 @@ import { InventoryComponent } from '../inventory/inventory.component';
 
 @Component({
   selector: 'app-admin-navbar',
+  standalone: true,
   imports: [RouterModule],
   templateUrl: './admin_navbar.component.html',
   styleUrl: './admin_navbar.component.scss'

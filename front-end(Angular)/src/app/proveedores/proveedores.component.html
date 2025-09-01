@@ -14,6 +14,7 @@
     </div>
   </section>
   <br>
+
   <!-- Busqueda y Agregar -->
   <section>
     <div class="container buscar-agg">
@@ -26,24 +27,20 @@
             </div>
           </div>
         </div>
+
         <!-- Agregar Proveedor -->
         <div class="col-sm-12 col-md-6 col-lg-6">
           <div class="agg-provee">
             <button class="btn agregar" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
               Agregar Proveedor
             </button>
-            <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+            <div #offcanvasRef class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
               <div class="offcanvas-header">
                 <h5 class="offcanvas-title" id="staticBackdropLabel">Registrar Proveedor</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" (click)="cerrarFormularioModificar()"></button>
               </div>
               <div class="offcanvas-body">
-                <div>
-                  <app-add-proveedor></app-add-proveedor>
-                </div>
-              </div>
-              <div class="confirmarfinal">
-                <button type="submit" class="btn confir">Confirmar</button>
+                <app-add-proveedor (proveedorCreado)="agregarProveedor($event)"></app-add-proveedor>
               </div>
             </div>
           </div>
@@ -51,7 +48,8 @@
       </div>
     </div>
   </section>
-  <!-- Tablas Informacion -->
+
+  <!-- Tabla de Proveedores -->
   <section>
     <div class="container">
       <table class="table table-bordered">
@@ -66,34 +64,34 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="td1" data-label="Nombre De Proveedor"> 
+          <tr *ngFor="let proveedor of proveedores">
+            <td class="td1" data-label="Nombre De Proveedor">
               <img src="../../assets/img/icons-navbar/Proovedores.png" alt="" width="30px" height="30px">
-              <a>Coca-Cola</a>
+              <a>{{ proveedor.nombre_proveedor }} {{ proveedor.apellido_proveedor }}</a>
             </td>
-            <td data-label="Teléfono">31546235215</td>
-            <td data-label="Correo">cocacolagmail.com</td>
-            <td data-label="N° Deudas pendientes">0</td>
-            <td data-label="Estado de Proveedor"><span class="status activo">Activo</span></td>
+            <td data-label="Teléfono">{{ proveedor.telefono_proveedor }}</td>
+            <td data-label="Correo">{{ proveedor.correo_proveedor }}</td>
+            <td data-label="N° Deudas pendientes">{{ proveedor.deudas_pendientes || 0 }}</td>
+            <td data-label="Estado de Proveedor">
+              <span class="status" [ngClass]="proveedor.estado_proveedor === 'Activo' ? 'activo' : 'inactivo'">
+                {{ proveedor.estado_proveedor }}
+              </span>
+            </td>
             <td data-label="Acciones">
-              <button class="btn ver">Ver</button>
-              <button class="btn modificar">Modificar</button>
-              <button class="btn eliminar">Eliminar</button>
-            </td>
-          </tr>
-          <tr>
-            <td class="td1" data-label="Nombre De Proveedor"> 
-              <img src="../../assets/img/icons-navbar/Proovedores.png" alt="" width="30px" height="30px">
-              <a>Henry Forero</a>
-            </td>
-            <td data-label="Teléfono">31852635215</td>
-            <td data-label="Correo">Henryfogmail.com</td>
-            <td data-label="N° Deudas pendientes">2</td>
-            <td data-label="Estado de Proveedor"><span class="status inactivo">Inactivo</span></td>
-            <td data-label="Acciones">
-              <button class="btn ver">Ver</button>
-              <button class="btn modificar">Modificar</button>
-              <button class="btn eliminar">Eliminar</button>
+              <!-- <button class="btn ver">Ver</button> -->
+              <button type="button" class="btn btn modificar" (click)="abrirFormularioModificar(proveedor)">Modificar</button>
+              <ng-container *ngIf="proveedorSeleccionado">
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="modificarProveedorCanvas" aria-labelledby="modificarProveedorLabel">  
+                  <div class="offcanvas-header">
+                    <h5 id="modificarProveedorLabel">Modificar Proveedor</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" (click)="cerrarFormularioModificar()"></button>
+                  </div>
+                  <div class="offcanvas-body">
+                    <app-modify-proveedor [proveedor]="proveedorSeleccionado" (guardar)="modificarProveedor()"></app-modify-proveedor>
+                  </div>
+                </div>
+              </ng-container>
+              <button class="btn eliminar" (click)="eliminarProveedor(proveedor.id_proveedor)">Eliminar</button>
             </td>
           </tr>
         </tbody>
