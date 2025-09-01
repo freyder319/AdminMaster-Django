@@ -4,6 +4,7 @@ import { CreateProductoComponent } from "../create_producto/create_producto.comp
 
 @Component({
   selector: 'app-inventory',
+  standalone: true,
   imports: [AdminNavbarComponent, CreateProductoComponent],
   templateUrl: './inventory.component.html',
   styleUrls: ['./inventory.component.scss']

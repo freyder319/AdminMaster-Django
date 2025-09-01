@@ -1,0 +1,32 @@
+<div class="container form">
+    <div class="formulario">
+        <form (ngSubmit)="enviarCambios()">
+            <div class="mb-3">
+                <label class="form-label">Nombre Proveedor</label>
+                <input [(ngModel)]="proveedor.nombre_proveedor" name="nombre" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Apellido Proveedor</label>
+                <input [(ngModel)]="proveedor.apellido_proveedor" name="apellido" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Teléfono Proveedor</label>
+                <input [(ngModel)]="proveedor.telefono_proveedor" name="telefono" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Correo Proveedor</label>
+                <input [(ngModel)]="proveedor.correo_proveedor" name="correo" class="form-control" required />
+            </div>
+            <label class="form-label d-block mb-2">Estado Proveedor</label>
+            <div class="container act-inac">
+                <div class="activo">
+                    <button type="button" class="btn-act" [class.active]="proveedor.estado_proveedor === 'Activo'" (click)="proveedor.estado_proveedor = 'Activo'">Activo</button>
+                </div>
+                <div class="inactivo">
+                    <button type="button" class="btn-inac" [class.active]="proveedor.estado_proveedor === 'Inactivo'" (click)="proveedor.estado_proveedor = 'Inactivo'">Inactivo</button>
+                </div>
+            </div><br>
+            <button type="submit" class="btn confir">Guardar Cambios</button>
+        </form>
+    </div>
+</div>

@@ -55,6 +55,10 @@ MIDDLEWARE = [
 CORS_ALLOW_ALL_ORIGINS = True
 ROOT_URLCONF = 'Gestor.urls'
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:4200",  # Puerto por defecto de Angular
+]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
